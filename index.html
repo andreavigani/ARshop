@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>AR Shop</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+    <script src="js/JSARToolKit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img class="navbar-brand" src="img/logo.png">
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Log In</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>Shop in Real World!</h1>
+            <p>This is a template for a simple marketing or informational website. <br>It includes a large callout called a jumbotron and three supporting pieces of content.</p>
+            <div id="search-bar" class="input-group col-md-10 col-md-offset-1">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </span>
+            </div>
+            <!-- /input-group -->
+        </div>
+    </div>
+    <div id="template" class="jumbotron">
+        <div class="container">
+            <div class="col-md-6">
+                <h1>Start building your cube!</h1>
+                <ol>
+                <li>Uno</li>
+                <li>Due</li>
+                <li>Tre</li>
+                </ol>
+                <a id="download" href="img/ARshop-template.pdf" type="button" class="btn btn-default" target="_blank"><i class="fa fa-download" aria-hidden="true"></i>Download Template</a>
+            </div>
+                        <div class="col-md-6">
+                <img src="img/template.png">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <video style="position:absolute;" id="video" autoplay></video>
+            <canvas id="hiddenCanvas"></canvas>
+            <canvas id="drawingCanvas"></canvas>
+            <div id="view" class="col-md-6">
+                <label for="videoSource">Video source: </label>
+                <select class="form-control" id="videoSource"></select>
+                <canvas id="outCanvas"></canvas>
+                <button type="button" class="btn btn-default" id="start">View in Real World</button>
+            </div>
+            <div class="col-md-6">
+                <h1>Cubo colorato 3D</h1>
+            </div>
+        </div>
+    </div>
+      <footer>
+      <div class="container">
+        <p>© 2016 AR Shop</p>
+      </div>
+    </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/adapterjs/0.13.3/adapter.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
