@@ -4,6 +4,8 @@ body
 
     padding-top: 70px;
 }
+h1{font-weight:700;}
+a{color:#232F3E;}
 .navbar-inverse
 {
     border: none;
@@ -20,6 +22,7 @@ body
 
     color: #fff!important;
 }
+.navbar-inverse .navbar-toggle,.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover{margin-top:18px;background:none;border:none;}
 #search-bar
 {
     margin-top: 2em;
@@ -75,15 +78,15 @@ canvas
 {
     max-width: 100%;
     padding: 2em;
-
-    border: 2px dashed #232f3e;
+    background:#CC935C;
+    border: 2px dashed #966638;
 }
 #download
 {
-    font-size: 22px;
+    font-size: 20px;
 
     padding: 1em;
-    margin-top:1em;
+    margin:1em auto;
 
     -webkit-transition: background .7s;
        -moz-transition: background .7s;
@@ -103,4 +106,9 @@ canvas
     margin-right: .7em;
 }
 .jumbotron{margin-bottom:0;}
+#products{padding:4em 0;}
+.product{text-align:center;}
+.product img{max-width:80%;}
+.product-detail{padding:4em 0;}
+
 footer{background:#232f3e; color:#fff; padding: 2em 0;}

@@ -5,15 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>AR Shop</title>
+    <title>AR Shop - Product Details</title>
     <link rel="icon" href="img/favicon.png" type="image/png" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
     <link href='//fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+    <script src="js/JSARToolKit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.min.js"></script>
 </head>
-
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -35,43 +36,28 @@
             <!--/.navbar-collapse -->
         </div>
     </nav>
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron text-center">
-        <div class="container">
-        <div class="input-group col-md-10 col-md-offset-1">
-            <h1>Shop in Real World!</h1>
-            <p><strong>ARshop</strong> is the first augmented reality e-commerce.<br>Here you can find everything you need and view products right in your hand or near you just using our <strong>ARcube</strong> before buy!</p>
-        </div>
-            <div id="search-bar" class="input-group col-md-10 col-md-offset-1">
-                <input type="text" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </span>
+<div class="container product-detail">
+        <div class="row">
+            <video style="position:absolute;" id="video" autoplay></video>
+            <canvas id="hiddenCanvas"></canvas>
+            <canvas id="drawingCanvas"></canvas>
+            <div id="view" class="col-md-6">
+                <label for="videoSource">Video source: </label>
+                <select class="form-control" id="videoSource"></select>
+                <canvas id="outCanvas"></canvas>
+                <button type="button" class="btn btn-default" id="start">View in Real World</button>
             </div>
-            <!-- /input-group -->
-        </div>
-    </div>
-    <div id="template" class="jumbotron">
-        <div class="container">
-            <div class="col-md-6">
-                <h1>Get Ready!</h1>
-                <ol>
-                <li><a href="img/ARshop-template.pdf" target="_blank">Download</a> the template.</li>
-                <li>Print it.</li>
-                <li>Build your <strong>ARcube</strong>.</li>
-                <li>View products in your world before buy!</li>
-                </ol>
-                <a id="download" href="img/ARshop-template.pdf" type="button" class="btn btn-default" target="_blank"><i class="fa fa-download" aria-hidden="true"></i>Download Template</a>
-            </div>
-                        <div class="col-md-6">
-                <img src="img/template.png">
+            <div id="product" class="col-md-6">
+                <h1 class="product-name"></h1>
+                <div class="product-price"></div>
+                <p class="product-description"></p>
             </div>
         </div>
     </div>
-
-    <div class="container" id="products">
-      <div class="row"><h1>Top selling products:</h1></div>
-    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/adapterjs/0.13.3/adapter.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
       <footer>
       <div class="container">
         <p>© 2016 AR Shop</p>

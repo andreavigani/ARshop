@@ -1,0 +1,26 @@
+[
+   {  
+      "id" : "product_1",
+      "name"  : "Cubo 6cm",
+      "price"     : "18",
+      "description" : "Lorem ipsum",
+      "image": "rubik.jpg",
+      "file": "cube1"
+   },
+   {
+      "id" : "product_2",
+      "name"  : "Cubo 8cm",
+      "price"     : "22",
+      "description" : "Lorem ipsum",
+      "image": "rubik.jpg",
+      "file": "cube"
+   },   
+   {
+      "id" : "product_3",
+      "name"  : "Cubo 10cm",
+      "price"     : "30",
+      "description" : "Lorem ipsum",
+      "image": "rubik.jpg",
+      "file": "cube2"
+   }
+]
