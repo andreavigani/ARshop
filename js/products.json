@@ -2,21 +2,21 @@
     "id": "product_1",
     "name": "Cubo 6cm",
     "price": "18",
-    "description": "Lorem ipsum",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id massa et dui vulputate dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque finibus sem at urna congue, sed malesuada augue blandit. Donec in bibendum mauris. Cras mollis elit non lacus finibus, ut tincidunt nunc blandit.",
     "image": "rubik.jpg",
     "file": "cube"
 }, {
     "id": "product_2",
     "name": "Lattina Coca-Cola",
     "price": "2,40",
-    "description": "Lorem ipsum",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id massa et dui vulputate dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque finibus sem at urna congue, sed malesuada augue blandit. Donec in bibendum mauris. Cras mollis elit non lacus finibus, ut tincidunt nunc blandit.",
     "image": "rubik.jpg",
     "file": "coca-cola"
 }, {
     "id": "product_3",
     "name": "Cubo 10cm",
     "price": "30",
-    "description": "Lorem ipsum",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id massa et dui vulputate dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque finibus sem at urna congue, sed malesuada augue blandit. Donec in bibendum mauris. Cras mollis elit non lacus finibus, ut tincidunt nunc blandit.",
     "image": "rubik.jpg",
     "file": "cube1"
 }]

@@ -59,15 +59,17 @@ video, canvas {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
-    border: .7em solid #fff;
+    background: #fff;
 }
 #start {
     position: relative;
     z-index: 2;
-    margin-top: -100px;
 }
 .live {
     background: #f44336!important;
+}
+.live:hover {
+    background: #e82a1c!important;
 }
 #videoSource {
     visibility: hidden;
@@ -98,7 +100,7 @@ video, canvas {
     border: 2px dashed #966638;
     background: #cc935c;
 }
-#download, #start {
+#download, #start, .add-to-cart button {
     font-size: 20px;
     padding: 1em;
     -webkit-transition: background .7s;
@@ -111,10 +113,11 @@ video, canvas {
     outline: none;
     background: #232f3e;
 }
-#download:hover, #start:hover {
+#download:hover, #start:hover, .add-to-cart button:hover {
+    color: #fff;
     background: #192431;
 }
-#download i, #start i {
+#download i, #start i, .add-to-cart i {
     margin-right: .7em;
 }
 .jumbotron {
@@ -149,17 +152,45 @@ video, canvas {
     -ms-transition: opacity 1s;
     -o-transition: opacity 1s;
     transition: opacity 1s;
+    background:#fff;
+    display:block;
+}
+.product-name {
+    float: left;
 }
 .product-price {
     font-size: 2em;
     font-weight: 700;
+    float: right;
     padding: .5em 1em;
-    text-align: right;
+    cursor: default;
     color: #fff;
+    border: none;
+    outline: none;
     background: #f44336;
 }
 .product-description {
     font-size: 1.4em;
+    margin-top: 2em;
+}
+label {
+    font-size: 16px;
+    float: left;
+}
+#quantity {
+    font-size: 18px;
+    float: left;
+    width: 100px;
+    padding: 1.3em;
+    text-align: center;
+}
+.add-to-cart {
+    margin-bottom: 2em;
+    text-align: right;
+}
+.add-to-cart button {
+    font-size: 18px;
+    padding: .7em;
 }
 footer {
     padding: 2em 0;

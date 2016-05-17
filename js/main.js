@@ -12,7 +12,7 @@ $.getJSON("js/products.json", function(data) {
 $('.pager .previous').click(function() {
     var url = window.location.search;
     var product_n = parseInt(url.substring(url.indexOf('_') + 1)) - 1;
-    if (product_n <= 0) {
+    if (product_n > 0) {
         window.location = 'product.html?product=product_' + product_n;
     } else {
         $(this).addClass('disabled');
@@ -32,6 +32,7 @@ $.getJSON("js/products.json", function(data) {
     $.each(data, function(key, value) {
         if (product == value.id) {
             $('.product-image').css('margin-top', -$('#outCanvas').height());
+            $('#start').css('margin-top', -$('#start').height());
             $('.product-image').attr("src", "img/" + value.image);
             $('.product-name').html(value.name);
             $('.product-price').html(value.price + '€');
@@ -86,7 +87,6 @@ function errorCallback(error) {
 }
 
 function start() {
-    $('.product-image').css('margin-top', -$('#outCanvas').height());
     if (window.stream) {
         window.stream.getTracks().forEach(function(track) {
             track.stop();
@@ -121,6 +121,7 @@ $('#start').click(function() {
         $(this).addClass("live");
         $(this).html("<i class='fa fa-stop' aria-hidden='true'></i>Stop");
         $('.product-image').css('opacity', 0);
+        $('.product-image').css('display', 'none');
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             $('.switch-camera').css('opacity', 0.7);
         }
@@ -128,7 +129,9 @@ $('#start').click(function() {
     } else {
         $(this).html("<i class='fa fa-play' aria-hidden='true'></i>Start");
         $(this).removeClass("live");
+        $('.product-image').css('margin-top', -$('#outCanvas').height());
         $('.product-image').css('opacity', 1);
+        $('.product-image').css('display', 'block');
         $('.switch-camera').css('opacity', 0);
         var track = stream.getTracks()[0];
         track.stop();
@@ -325,4 +328,5 @@ function start_processing(event) {
         // dcanvas now ready. Copy it to ocanvas to show it
         ocanvas.getContext("2d").drawImage(dcanvas, 0, 0, dcanvas.width, dcanvas.height);
     }, 40);
+
 }
