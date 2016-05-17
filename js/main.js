@@ -1,6 +1,6 @@
 $.getJSON("js/products.json", function(data) {
     $.each(data, function(key, value) {
-        $('#products .row').append("<div class='col-sm-4 product'><img src='img/"+value.image+"'><hr><a id='" + value.id + "'><h3>" + value.name + "</h3></a><strong>" + value.price + "€</strong><p><a class='btn btn-default' id='" + value.id + "' role='button'>View details &raquo;</a></p></div>");
+        $('#products .row').append("<div class='col-sm-4 product'><img src='img/" + value.image + "'><hr><a id='" + value.id + "'><h3>" + value.name + "</h3></a><strong>" + value.price + "€</strong><p><a class='btn btn-default' id='" + value.id + "' role='button'>View details &raquo;</a></p></div>");
         $('.product a').click(function() {
             var a_href = $(this).attr('id');
             window.location = 'product.html?product=' + a_href;
@@ -9,17 +9,32 @@ $.getJSON("js/products.json", function(data) {
     });
 });
 
-var url = window.location.search
+$('.pager .previous').click(function() {
+    var url = window.location.search;
+    var product_n = parseInt(url.substring(url.indexOf('_') + 1)) - 1;
+    if (product_n <= 0) {
+        window.location = 'product.html?product=product_' + product_n;
+    } else {
+        $(this).addClass('disabled');
+    }
+});
+$('.pager .next').click(function() {
+    var url = window.location.search;
+    var product_n = parseInt(url.substring(url.indexOf('_') + 1)) + 1;
+    window.location = 'product.html?product=product_' + product_n;
+});
+
+var url = window.location.search;
 var product = url.substring(url.indexOf('=') + 1);
 var file;
 $.getJSON("js/products.json", function(data) {
     var items = [];
     $.each(data, function(key, value) {
         if (product == value.id) {
-          $('.product-image').css('margin-top',-$('#outCanvas').height());
-            $('.product-image').attr("src","img/"+value.image);
+            $('.product-image').css('margin-top', -$('#outCanvas').height());
+            $('.product-image').attr("src", "img/" + value.image);
             $('.product-name').html(value.name);
-            $('.product-price').html(value.price+'€');
+            $('.product-price').html(value.price + '€');
             $('.product-description').html(value.description);
             file = value.file;
         }
@@ -30,6 +45,7 @@ var videoElement = document.querySelector('#video');
 var videoSelect = document.querySelector('select#videoSource');
 var selectors = [videoSelect];
 $('#outCanvas').height($('#outCanvas').width());
+
 function gotDevices(deviceInfos) {
     // Handles being called several times to update labels. Preserve values.
     var values = selectors.map(function(select) {
@@ -56,8 +72,8 @@ function gotDevices(deviceInfos) {
             select.value = values[selectorIndex];
         }
     });
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-      $('select#videoSource option:eq(1)').attr('selected', 'selected');
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        $('select#videoSource option:eq(1)').attr('selected', 'selected');
     }
 }
 
@@ -70,7 +86,7 @@ function errorCallback(error) {
 }
 
 function start() {
-$('.product-image').css('margin-top',-$('#outCanvas').height());
+    $('.product-image').css('margin-top', -$('#outCanvas').height());
     if (window.stream) {
         window.stream.getTracks().forEach(function(track) {
             track.stop();
@@ -79,7 +95,11 @@ $('.product-image').css('margin-top',-$('#outCanvas').height());
     var videoSource = videoSelect.value;
     var constraints = {
         audio: false,
-        video: { deviceId: videoSource ? { exact: videoSource } : undefined }
+        video: {
+            deviceId: videoSource ? {
+                exact: videoSource
+            } : undefined
+        }
     };
     navigator.mediaDevices.getUserMedia(constraints)
         .then(function(stream) {
@@ -91,40 +111,42 @@ $('.product-image').css('margin-top',-$('#outCanvas').height());
         .then(gotDevices)
         .catch(errorCallback);
 
-    videoElement.onloadedmetadata = start_processing; 
+    videoElement.onloadedmetadata = start_processing;
 }
 
-var live=false;
-$('#start').click(function(){ 
-  live=!live;
-  if (live==true){
-    $(this).addClass("live");
-    $(this).html("<i class='fa fa-stop' aria-hidden='true'></i>Stop");
-    $('.product-image').css('opacity',0);
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {$('.switch-camera').css('opacity',.7);}
-    start();
-  } else {
-    $(this).html("<i class='fa fa-play' aria-hidden='true'></i>Start");
-    $(this).removeClass("live");
-    $('.product-image').css('opacity',1);
-    $('.switch-camera').css('opacity',0);
-    var track = stream.getTracks()[0];
-    track.stop();
+var live = false;
+$('#start').click(function() {
+    live = !live;
+    if (live === true) {
+        $(this).addClass("live");
+        $(this).html("<i class='fa fa-stop' aria-hidden='true'></i>Stop");
+        $('.product-image').css('opacity', 0);
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            $('.switch-camera').css('opacity', 0.7);
+        }
+        start();
+    } else {
+        $(this).html("<i class='fa fa-play' aria-hidden='true'></i>Start");
+        $(this).removeClass("live");
+        $('.product-image').css('opacity', 1);
+        $('.switch-camera').css('opacity', 0);
+        var track = stream.getTracks()[0];
+        track.stop();
 
-  }
+    }
 });
 
-var camera=false;
-$('.switch-camera').click(function(){ 
-  camera=!camera;
-  if (camera==false){
-    $('select#videoSource option:eq(0)').attr('selected', 'selected'); 
-    start();
-  } else {
-    $('select#videoSource option:eq(1)').attr('selected', 'selected'); 
-    start();
-  }
-})
+var camera = false;
+$('.switch-camera').click(function() {
+    camera = !camera;
+    if (camera === false) {
+        $('select#videoSource option:eq(0)').attr('selected', 'selected');
+        start();
+    } else {
+        $('select#videoSource option:eq(1)').attr('selected', 'selected');
+        start();
+    }
+});
 
 function start_processing(event) {
 
@@ -145,7 +167,9 @@ function start_processing(event) {
     ART_detector.setContinueMode(true);
 
     // setup three.js
-    var renderer = new THREE.WebGLRenderer({ canvas: dcanvas });
+    var renderer = new THREE.WebGLRenderer({
+        canvas: dcanvas
+    });
     renderer.autoClear = false;
     // there is still no scene, camera and objects here...
     // create the background plane and its own camera
@@ -201,28 +225,27 @@ function start_processing(event) {
     //container.add(axisHelper);
 
     // load the model
-var onLoad = function(geometry, materials){
-    var material = new THREE.MeshFaceMaterial(materials);
-    object = new THREE.Mesh(geometry, material);
-            geometry.computeBoundingBox();
+    var onLoad = function(geometry, materials) {
+        var material = new THREE.MeshFaceMaterial(materials);
+        object = new THREE.Mesh(geometry, material);
+        geometry.computeBoundingBox();
         object.position.y = geometry.boundingBox.min.y;
-    container.add(object);
-};
-var onProgress = function(){
-    // your optional on progress logic
-}
-var onError = function(error){
-    console.log( error );
-}
+        container.add(object);
+    };
+    var onProgress = function() {
+        // your optional on progress logic
+    };
+    var onError = function(error) {
+        console.log(error);
+    };
 
-    var loader = new THREE.JSONLoader;
+    var loader = new THREE.JSONLoader();
     var object;
-    loader.load('objects/' + file + '.js', onLoad,onProgress,onError);
+    loader.load('objects/' + file + '.js', onLoad, onProgress, onError);
 
 
     var ambLight = new THREE.AmbientLight(0x909090, 2.0);
     container.add(ambLight);
-
 
     // process each frame
     setInterval(function() {
@@ -264,7 +287,7 @@ var onError = function(error){
                 object.rotation.z = 0;
             }
 
-            if (orientation == 0) {
+            if (orientation === 0) {
                 /*U*/
                 resetRotation();
             } else if (orientation == 1) {

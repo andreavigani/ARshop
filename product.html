@@ -15,6 +15,7 @@
     <script src="js/JSARToolKit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.min.js"></script>
 </head>
+
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -36,12 +37,12 @@
             <!--/.navbar-collapse -->
         </div>
     </nav>
-<div class="container product-detail">
+    <div class="container product-detail">
         <div class="row">
-        <div id="product" class="col-md-6">
+            <div id="product" class="col-md-6">
                 <h1 class="product-name"></h1>
-                <p class="product-price"></p>
                 <p class="product-description"></p>
+                <p class="product-price"></p>
             </div>
             <video style="position:absolute;" id="video" autoplay></video>
             <canvas id="hiddenCanvas"></canvas>
@@ -52,14 +53,21 @@
                 <img class="product-image">
                 <button type="button" class="btn btn-default" id="start"><i class="fa fa-play" aria-hidden="true"></i>View in Real World</button>
             </div>
+            <nav>
+                <ul class="pager">
+                    <li class="previous"><a><span aria-hidden="true">&larr;</span> Previous</a></li>
+                    <li class="next"><a>Next <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
             <select class="form-control" id="videoSource"></select>
         </div>
     </div>
-      <footer>
-      <div class="container">
-        <div class="col-md-6">© 2016 <strong>AR Shop</strong></div>
-        <div class="col-md-6 text-right">Powered by <strong>Andrea Vigani</strong> <br> Università degli Studi di Udine</div>
-      </div>
+    <footer>
+        <div class="container">
+            <div class="col-md-6">© 2016 <strong>AR Shop</strong></div>
+            <div class="col-md-6 text-right">Powered by <strong>Andrea Vigani</strong>
+                <br> Università degli Studi di Udine</div>
+        </div>
     </footer>
     <script src="//cdnjs.cloudflare.com/ajax/libs/adapterjs/0.13.3/adapter.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
