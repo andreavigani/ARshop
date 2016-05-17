@@ -5,7 +5,7 @@
       "price"     : "18",
       "description" : "Lorem ipsum",
       "image": "rubik.jpg",
-      "file": "cube1"
+      "file": "cube"
    },
    {
       "id" : "product_2",
@@ -21,6 +21,6 @@
       "price"     : "30",
       "description" : "Lorem ipsum",
       "image": "rubik.jpg",
-      "file": "cube2"
+      "file": "cube1"
    }
 ]
