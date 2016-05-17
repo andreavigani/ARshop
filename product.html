@@ -38,29 +38,27 @@
     </nav>
 <div class="container product-detail">
         <div class="row">
+        <div id="product" class="col-md-6">
+                <h1 class="product-name"></h1>
+                <p class="product-price"></p>
+                <p class="product-description"></p>
+            </div>
             <video style="position:absolute;" id="video" autoplay></video>
             <canvas id="hiddenCanvas"></canvas>
             <canvas id="drawingCanvas"></canvas>
             <div id="view" class="col-md-6">
-                <label for="videoSource">Video source: </label>
-                <select class="form-control" id="videoSource"></select>
+                <a class="switch-camera"></a>
                 <canvas id="outCanvas"></canvas>
-                <button type="button" class="btn btn-default" id="start">View in Real World</button>
+                <img class="product-image">
+                <button type="button" class="btn btn-default" id="start"><i class="fa fa-play" aria-hidden="true"></i>View in Real World</button>
             </div>
-            <div id="product" class="col-md-6">
-                <h1 class="product-name"></h1>
-                <div class="product-price"></div>
-                <p class="product-description"></p>
-            </div>
+            <select class="form-control" id="videoSource"></select>
         </div>
     </div>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/adapterjs/0.13.3/adapter.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
       <footer>
       <div class="container">
-        <p>© 2016 AR Shop</p>
+        <div class="col-md-6">© 2016 <strong>AR Shop</strong></div>
+        <div class="col-md-6 text-right">Powered by <strong>Andrea Vigani</strong> <br> Università degli Studi di Udine</div>
       </div>
     </footer>
     <script src="//cdnjs.cloudflare.com/ajax/libs/adapterjs/0.13.3/adapter.min.js"></script>

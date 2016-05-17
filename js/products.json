@@ -9,11 +9,11 @@
    },
    {
       "id" : "product_2",
-      "name"  : "Cubo 8cm",
-      "price"     : "22",
+      "name"  : "Lattina Coca-Cola",
+      "price"     : "2,40",
       "description" : "Lorem ipsum",
       "image": "rubik.jpg",
-      "file": "cube"
+      "file": "coca-cola"
    },   
    {
       "id" : "product_3",

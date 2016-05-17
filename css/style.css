@@ -5,7 +5,7 @@ body
     padding-top: 70px;
 }
 h1{font-weight:700;}
-a{color:#232F3E;}
+a{color:#232F3E; cursor:pointer;}
 .navbar-inverse
 {
     border: none;
@@ -22,6 +22,7 @@ a{color:#232F3E;}
 
     color: #fff!important;
 }
+.navbar-nav > li:hover{background:#192431;}
 .navbar-inverse .navbar-toggle,.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover{margin-top:18px;background:none;border:none;}
 #search-bar
 {
@@ -52,6 +53,7 @@ canvas
 {
     text-align: center;
 }
+#view img{position:relative; z-index:1;}
 #outCanvas
 {
     display: block;
@@ -62,18 +64,31 @@ canvas
     width: 100%;
 
     border: .7em solid #fff;
-    background: aliceblue;
+
 }
 #start
 {
     position: relative;
-    z-index: 999;
+    z-index: 2;
 
     margin-top: -100px;
 }
+.live{background:#F44336!important;}
+
+#videoSource{visibility:hidden;}
+.switch-camera{
+    opacity:0;
+    position: absolute;
+    z-index: 2;
+    background:url(../img/switch-camera.png) no-repeat;
+    width:48px; height:48px;
+    right: 2em;
+    margin-top: 1em;
+}
+
 #template{background:lightblue;}
-#template h1{font-size:48px;}
-#template ol li{font-size:32px; margin-top:1em;}
+#template ul{padding-left:0;}
+#template ul li{list-style:none;margin:4em 0;}
 #template img
 {
     max-width: 100%;
@@ -81,12 +96,12 @@ canvas
     background:#CC935C;
     border: 2px dashed #966638;
 }
-#download
+#download,#start
 {
     font-size: 20px;
 
     padding: 1em;
-    margin:1em auto;
+
 
     -webkit-transition: background .7s;
        -moz-transition: background .7s;
@@ -95,20 +110,43 @@ canvas
 
     color: #fff;
     border: none;
+    outline:none;
     background: #232f3e;
 }
-#download:hover
+#download:hover,#start:hover
 {
-    background: rgba(35, 47, 62, .7);
+    background: #192431
 }
-#download i
+#download i, #start i
 {
     margin-right: .7em;
 }
-.jumbotron{margin-bottom:0;}
-#products{padding:4em 0;}
-.product{text-align:center;}
-.product img{max-width:80%;}
-.product-detail{padding:4em 0;}
+.jumbotron{margin-bottom:0; padding: 4em auto;}
+#products{background:#fff; padding:4em 0; text-align:center;}
+
+.product{margin-top:3em;}
+.product strong{font-size:1.5em;}
+.product a{margin-top:1em;}
+.product img{max-width:60%;}
+.product-detail{padding-top:4em; padding-bottom:4em;}
+.product-image{width:100%;    -webkit-transition: opacity 1s;
+       -moz-transition: opacity 1s;
+        -ms-transition: opacity 1s;
+            transition: opacity 1s;}
+.product-price{font-weight:700; font-size:2em; padding:.5em 1em; background:#F44336; color:#fff; text-align:right;}
+.product-description{font-size:1.4em;}
 
 footer{background:#232f3e; color:#fff; padding: 2em 0;}
+
+@media (max-width: 380px) {
+#download
+{
+    font-size: 16px;
+}
+}
+@media (max-width: 768px) {
+footer, .text-right
+{
+   text-align:center!important;
+}
+}
