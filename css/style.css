@@ -1,6 +1,6 @@
 body {
-    font-family: 'Quicksand', sans-serif;
     padding-top: 70px;
+    font-family: 'Quicksand', sans-serif;
 }
 h1 {
     font-weight: 700;
@@ -101,7 +101,6 @@ video, canvas {
     background: #cc935c;
 }
 #download, #start, .add-to-cart button {
-    font-size: 20px;
     padding: 1em;
     -webkit-transition: background .7s;
     -moz-transition: background .7s;
@@ -112,6 +111,7 @@ video, canvas {
     border: none;
     outline: none;
     background: #232f3e;
+    font-size: 20px;
 }
 #download:hover, #start:hover, .add-to-cart button:hover {
     color: #fff;
@@ -122,7 +122,8 @@ video, canvas {
 }
 .jumbotron {
     margin-bottom: 0;
-    padding: 4em auto;
+    padding-top: 4em;
+    padding-bottom: 4em;
 }
 #products {
     padding: 4em 0;
@@ -146,21 +147,19 @@ video, canvas {
     padding-bottom: 4em;
 }
 .product-image {
+    display: block;
     width: 100%;
     -webkit-transition: opacity 1s;
     -moz-transition: opacity 1s;
     -ms-transition: opacity 1s;
     -o-transition: opacity 1s;
     transition: opacity 1s;
-    background:#fff;
-    display:block;
+    background: #fff;
 }
 .product-name {
     float: left;
 }
 .product-price {
-    font-size: 2em;
-    font-weight: 700;
     float: right;
     padding: .5em 1em;
     cursor: default;
@@ -168,29 +167,31 @@ video, canvas {
     border: none;
     outline: none;
     background: #f44336;
+    font-size: 2em;
+    font-weight: 700;
 }
 .product-description {
-    font-size: 1.4em;
     margin-top: 2em;
+    font-size: 1.4em;
 }
 label {
-    font-size: 16px;
     float: left;
+    font-size: 16px;
 }
 #quantity {
-    font-size: 18px;
     float: left;
     width: 100px;
     padding: 1.3em;
     text-align: center;
+    font-size: 18px;
 }
 .add-to-cart {
     margin-bottom: 2em;
     text-align: right;
 }
 .add-to-cart button {
-    font-size: 18px;
     padding: .7em;
+    font-size: 18px;
 }
 footer {
     padding: 2em 0;

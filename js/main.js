@@ -112,6 +112,7 @@ function start() {
         .catch(errorCallback);
 
     videoElement.onloadedmetadata = start_processing;
+
 }
 
 var live = false;
@@ -135,7 +136,6 @@ $('#start').click(function() {
         $('.switch-camera').css('opacity', 0);
         var track = stream.getTracks()[0];
         track.stop();
-
     }
 });
 
@@ -227,9 +227,12 @@ function start_processing(event) {
     var axisHelper = new THREE.AxisHelper(60);
     //container.add(axisHelper);
 
+
     // load the model
     var onLoad = function(geometry, materials) {
-        var material = new THREE.MeshFaceMaterial(materials);
+        var texture = THREE.ImageUtils.loadTexture( "objects/outUVtexture.png" );
+        var material = new THREE.MeshBasicMaterial( { map : texture } );
+        //var material = new THREE.MultiMaterial(materials);
         object = new THREE.Mesh(geometry, material);
         geometry.computeBoundingBox();
         object.position.y = geometry.boundingBox.min.y;
@@ -245,7 +248,6 @@ function start_processing(event) {
     var loader = new THREE.JSONLoader();
     var object;
     loader.load('objects/' + file + '.js', onLoad, onProgress, onError);
-
 
     var ambLight = new THREE.AmbientLight(0x909090, 2.0);
     container.add(ambLight);
@@ -283,7 +285,6 @@ function start_processing(event) {
             }
 
             // here we will draw the 3D objects to dcanvas
-
             function resetRotation() {
                 object.rotation.x = 0;
                 object.rotation.y = 0;
@@ -328,5 +329,4 @@ function start_processing(event) {
         // dcanvas now ready. Copy it to ocanvas to show it
         ocanvas.getContext("2d").drawImage(dcanvas, 0, 0, dcanvas.width, dcanvas.height);
     }, 40);
-
 }
