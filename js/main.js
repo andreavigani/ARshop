@@ -177,6 +177,8 @@ function start_processing(event) {
     // there is still no scene, camera and objects here...
     // create the background plane and its own camera
     var bgTexture = new THREE.Texture(hcanvas);
+    bgTexture.minFilter = THREE.LinearFilter;
+
     var bgPlane = new THREE.Mesh(
         new THREE.PlaneGeometry(2, 2),
         new THREE.MeshBasicMaterial({
