@@ -73,9 +73,9 @@ function gotDevices(deviceInfos) {
             select.value = values[selectorIndex];
         }
     });
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    /*if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         $('select#videoSource option:eq(1)').attr('selected', 'selected');
-    }
+    }*/
 }
 
 navigator.mediaDevices.enumerateDevices()
@@ -230,9 +230,9 @@ function start_processing(event) {
 
     // load the model
     var onLoad = function(geometry, materials) {
-        var texture = THREE.ImageUtils.loadTexture( "objects/outUVtexture.png" );
-        var material = new THREE.MeshBasicMaterial( { map : texture } );
-        //var material = new THREE.MultiMaterial(materials);
+        //var texture = THREE.ImageUtils.loadTexture( "objects/outUVtexture.png" );
+        //var material = new THREE.MeshBasicMaterial( { map : texture } );
+        material = new THREE.MultiMaterial(materials);
         object = new THREE.Mesh(geometry, material);
         geometry.computeBoundingBox();
         object.position.y = geometry.boundingBox.min.y;
@@ -266,65 +266,63 @@ function start_processing(event) {
         // detect markers
         var markerCount = ART_detector.detectMarkerLite(ART_raster, 128);
         if (markerCount > 0) {
-            var tmat = new NyARTransMatResult();
+            tmat = new NyARTransMatResult();
             // Create a NyARTransMatResult object for getting the marker translation matrices.
 
             var markers = {};
-            var orientation;
             // Go through the detected markers and get their IDs and transformation matrices.
             for (var idx = 0; idx < markerCount; idx++) {
                 // Get the ID marker data for the current marker.
                 // ID markers are special kind of markers that encode a number.
                 // The bytes for the number are in the ID marker data.
-                var id = ART_detector.getIdMarkerData(idx);
+                id = ART_detector.getIdMarkerData(idx);
                 orientation = id.getPacketData(1);
 
                 // Get the transformation matrix for the detected marker.
                 ART_detector.getTransformMatrix(idx, tmat);
 
-            }
+                // here we will draw the 3D objects to dcanvas
+                function resetRotation() {
+                    object.rotation.x = 0;
+                    object.rotation.y = 0;
+                    object.rotation.z = 0;
+                }
 
-            // here we will draw the 3D objects to dcanvas
-            function resetRotation() {
-                object.rotation.x = 0;
-                object.rotation.y = 0;
-                object.rotation.z = 0;
-            }
+                if (orientation === 0) {
+                    /*U*/
+                    resetRotation();
+                } else if (orientation == 1) {
+                    /*F*/
+                    resetRotation();
+                    object.rotation.x = -Math.PI / 2;
+                } else if (orientation == 2) {
+                    /*B*/
+                    resetRotation();
+                    object.rotation.x = Math.PI / 2;
+                    object.rotation.z = -Math.PI;
+                } else if (orientation == 3) {
+                    /*D*/
+                    resetRotation();
+                    object.rotation.x = Math.PI;
+                } else if (orientation == 4) {
+                    /*R*/
+                    resetRotation();
+                    object.rotation.z = Math.PI / 2;
+                    object.rotation.y = -Math.PI;
+                } else if (orientation == 5) {
+                    /*L*/
+                    resetRotation();
+                    object.rotation.z = -Math.PI / 2;
+                    object.rotation.y = -Math.PI;
+                } else {
+                    resetRotation();
+                }
 
-            if (orientation === 0) {
-                /*U*/
-                resetRotation();
-            } else if (orientation == 1) {
-                /*F*/
-                resetRotation();
-                object.rotation.x = -Math.PI / 2;
-            } else if (orientation == 2) {
-                /*B*/
-                resetRotation();
-                object.rotation.x = Math.PI / 2;
-                object.rotation.z = -Math.PI;
-            } else if (orientation == 3) {
-                /*D*/
-                resetRotation();
-                object.rotation.x = Math.PI;
-            } else if (orientation == 4) {
-                /*R*/
-                resetRotation();
-                object.rotation.z = Math.PI / 2;
-                object.rotation.y = -Math.PI;
-            } else if (orientation == 5) {
-                /*L*/
-                resetRotation();
-                object.rotation.z = -Math.PI / 2;
-                object.rotation.y = -Math.PI;
-            } else {
-                resetRotation();
             }
-
             container.matrix = ConvertMarkerMatrix(tmat);
+          } else {container.matrix = ConvertMarkerMatrix(1);}
 
             renderer.render(scene, camera);
-        }
 
         // dcanvas now ready. Copy it to ocanvas to show it
         ocanvas.getContext("2d").drawImage(dcanvas, 0, 0, dcanvas.width, dcanvas.height);
