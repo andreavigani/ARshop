@@ -248,8 +248,13 @@ function start_processing(event) {
     container.add(ambLight);
 
     // Load the product's model
+
     var onLoad = function(geometry, materials) {
-        material = new THREE.MultiMaterial(materials);
+        var textureLoader =new THREE.TextureLoader();
+        var texture = textureLoader.load("objects/outUVtexture.png");
+        material =new THREE.MeshLambertMaterial({map:texture });
+        console.log(materials);
+        //material = new THREE.MultiMaterial(materials);
         object = new THREE.Mesh(geometry, material);
         // Get object geometry bounding box
         geometry.computeBoundingBox();
