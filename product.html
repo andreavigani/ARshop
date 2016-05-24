@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>AR Shop - Product Details</title>
+    <title>AR Shop</title>
     <link rel="icon" href="img/favicon.png" type="image/png" />
+    <!-- CSS FILES -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <!-- FONTS -->
     <link href='//fonts.googleapis.com/css?family=Quicksand:400,700' rel='stylesheet' type='text/css'>
+    <!-- JSART ToolKit and ThreeJS libraries -->
     <script src="js/JSARToolKit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.min.js"></script>
 </head>
-
 <body>
+<!-- HEADER -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -34,11 +35,13 @@
                     <li><a href="#">Sign Up</a></li>
                 </ul>
             </div>
-            <!--/.navbar-collapse -->
         </div>
     </nav>
+<!-- HEADER -->
+<!-- PRODUCT -->
     <div class="container product-detail">
         <div class="row">
+            <!-- Product info -->
             <div id="product" class="col-md-6">
                 <h1 class="product-name"></h1>
                 <button class="product-price"></button>
@@ -58,12 +61,14 @@
             <video style="position:absolute;" id="video" autoplay></video>
             <canvas id="hiddenCanvas"></canvas>
             <canvas id="drawingCanvas"></canvas>
+            <!-- AR View -->
             <div id="view" class="col-md-6">
                 <a class="switch-camera"></a>
                 <canvas id="outCanvas"></canvas>
                 <img class="product-image">
                 <button type="button" class="btn btn-default" id="start"><i class="fa fa-play" aria-hidden="true"></i>View in Real World</button>
             </div>
+            <!-- Products through navigation -->
             <nav>
                 <ul class="pager">
                     <li class="previous"><a><span aria-hidden="true">&larr;</span> Previous</a></li>
@@ -73,6 +78,8 @@
             <select class="form-control" id="videoSource"></select>
         </div>
     </div>
+<!-- END PRODUCT -->
+<!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="col-md-6">© 2016 <strong>AR Shop</strong></div>
@@ -80,10 +87,11 @@
                 <br> Università degli Studi di Udine</div>
         </div>
     </footer>
+<!-- END FOOTER -->
+<!-- JS SCRIPTS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/adapterjs/0.13.3/adapter.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 </body>
-
 </html>

@@ -1,3 +1,4 @@
+/* GENERAL */
 body {
     padding-top: 70px;
     font-family: 'Quicksand', sans-serif;
@@ -9,6 +10,12 @@ a {
     cursor: pointer;
     color: #232f3e;
 }
+.jumbotron {
+    margin-bottom: 0;
+    padding-top: 4em;
+    padding-bottom: 4em;
+}
+/* HEADER */
 .navbar-inverse {
     border: none;
     background: #232f3e;
@@ -29,6 +36,7 @@ a {
     border: none;
     background: none;
 }
+/* SEARCH BAR */
 #search-bar {
     margin-top: 2em;
 }
@@ -40,50 +48,7 @@ a {
     color: #fff;
     background: #232f3e;
 }
-video, canvas {
-    max-width: 100%;
-}
-#hiddenCanvas, #drawingCanvas {
-    display: none;
-}
-#view {
-    text-align: center;
-}
-#view img {
-    position: relative;
-    z-index: 1;
-}
-#outCanvas {
-    display: block;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 100%;
-    background: #fff;
-}
-#start {
-    position: relative;
-    z-index: 2;
-}
-.live {
-    background: #f44336!important;
-}
-.live:hover {
-    background: #e82a1c!important;
-}
-#videoSource {
-    visibility: hidden;
-}
-.switch-camera {
-    position: absolute;
-    z-index: 2;
-    right: 2em;
-    width: 48px;
-    height: 48px;
-    margin-top: 1em;
-    opacity: 0;
-    background: url(../img/switch-camera.png) no-repeat;
-}
+/* AR CUBE TEMPLATE SECTION */
 #template {
     background: lightblue;
 }
@@ -120,11 +85,53 @@ video, canvas {
 #download i, #start i, .add-to-cart i {
     margin-right: .7em;
 }
-.jumbotron {
-    margin-bottom: 0;
-    padding-top: 4em;
-    padding-bottom: 4em;
+/* AUGMENTED REALITY VIEW */
+video, canvas {
+    max-width: 100%;
 }
+#hiddenCanvas, #drawingCanvas {
+    display: none;
+}
+#view {
+    text-align: center;
+}
+#view img {
+    position: relative;
+    z-index: 1;
+}
+#outCanvas {
+    display: block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+}
+#videoSource {
+    visibility: hidden;
+}
+/* AR Controls */
+#start {
+    position: relative;
+    z-index: 2;
+}
+.live {
+    background: #f44336!important;
+}
+.live:hover {
+    background: #e82a1c!important;
+}
+.switch-camera {
+    position: absolute;
+    z-index: 2;
+    right: 2em;
+    width: 48px;
+    height: 48px;
+    margin-top: 1em;
+    opacity: 0;
+    background: url(../img/switch-camera.png) no-repeat;
+}
+/* PRODUCTS */
 #products {
     padding: 4em 0;
     text-align: center;
@@ -193,11 +200,13 @@ label {
     padding: .7em;
     font-size: 18px;
 }
+/* FOOTER */
 footer {
     padding: 2em 0;
     color: #fff;
     background: #232f3e;
 }
+/* MEDIA QUERIES */
 @media (max-width: 380px) {
     #download {
         font-size: 16px;
