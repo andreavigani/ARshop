@@ -29,7 +29,7 @@ $.getJSON("js/products.json", function(data) {
         }
     });
 });
-
+//AR CONTROLS
 // Play/Stop AR marker detection handler on button click
 var live = false;
 $('#start').click(function() {
@@ -208,7 +208,7 @@ function start_processing(event) {
 
     // Set up main scene and camera with JSART parameters
     var scene = new THREE.Scene();
-    var camera = new THREE.Camera();
+    camera = new THREE.PerspectiveCamera(75, hvideo.clientWidth / hvideo.clientHeight, 0.1, 1000);
     var tmp = new Float32Array(16);
     ART_param.copyCameraMatrix(tmp, 1, 10000);
     camera.projectionMatrix = ConvertCameraMatrix(tmp);
@@ -250,11 +250,10 @@ function start_processing(event) {
     // Load the product's model
 
     var onLoad = function(geometry, materials) {
-        var textureLoader =new THREE.TextureLoader();
+        /*var textureLoader =new THREE.TextureLoader();
         var texture = textureLoader.load("objects/outUVtexture.png");
-        material =new THREE.MeshLambertMaterial({map:texture });
-        console.log(materials);
-        //material = new THREE.MultiMaterial(materials);
+        material =new THREE.MeshLambertMaterial({map:texture });*/
+        material = new THREE.MultiMaterial(materials);
         object = new THREE.Mesh(geometry, material);
         // Get object geometry bounding box
         geometry.computeBoundingBox();
